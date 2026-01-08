@@ -88,5 +88,10 @@ public class ToolBoxStream {
                 users.stream().distinct().collect(Collectors.toMap(u -> u.name(), u -> u.age()));
 
         System.out.println("Résultat collect toMap : " + activeAdultsToMap);
+
+        final Map<Integer, List<User>> activeAdultsGroupingBy =
+                users.stream().distinct().collect(Collectors.groupingBy(u -> u.age()));
+
+        System.out.println("Résultat collect groupingBy : " + activeAdultsGroupingBy);
     }
 }
