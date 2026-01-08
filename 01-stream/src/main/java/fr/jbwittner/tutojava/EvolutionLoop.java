@@ -13,13 +13,20 @@ public class EvolutionLoop {
         final List<User> users = FactoryModel.createUsers();
         System.out.println("Input : " + users);
 
-        activeAdultsForLoop(users);
-        activeAdultsForEach(users);
-        activeAdultsStreamWithoutLambda(users);
-        activeAdultsStreamWithLambda(users);
+        final List<User> activeAdultsForLoopResult = activeAdultsForLoop(users);
+        System.out.println("Résultat for loop : " + activeAdultsForLoopResult);
+
+        final List<User> activeAdultsForEachResult = activeAdultsForEach(users);
+        System.out.println("Résultat for each : " + activeAdultsForEachResult);
+
+        final List<User> activeAdultsStreamWithoutLambdaResult = activeAdultsStreamWithoutLambda(users);
+        System.out.println("Résultat stream sans lambda : " + activeAdultsStreamWithoutLambdaResult);
+
+        final List<User> activeAdultsStreamWithLambdaResult = activeAdultsStreamWithLambda(users);
+        System.out.println("Résultat stream avec lambda : " + activeAdultsStreamWithLambdaResult);
     }
 
-    private static void activeAdultsForLoop(final List<User> users) {
+    public static List<User> activeAdultsForLoop(final List<User> users) {
         // Le bon vieux monde des années 90
         final List<User> activeAdults = new ArrayList<>();
         // Gestion manuelle de l'index (risque d'IndexOutOfBounds)
@@ -34,10 +41,10 @@ public class EvolutionLoop {
             }
         }
 
-        System.out.println("Résultat for loop : " + activeAdults);
+        return activeAdults;
     }
 
-    private static void activeAdultsForEach(final List<User> users) {
+    public static List<User> activeAdultsForEach(final List<User> users) {
         final List<User> activeAdults = new ArrayList<>();
         // Cache un itérateur sous le capot
         for (User u : users) {
@@ -46,10 +53,10 @@ public class EvolutionLoop {
                 activeAdults.add(u);
             }
         }
-        System.out.println("Résultat for each : " + activeAdults);
+        return activeAdults;
     }
 
-    private static void activeAdultsStreamWithoutLambda(final List<User> users) {
+    public static List<User> activeAdultsStreamWithoutLambda(final List<User> users) {
         // Ce que le compilateur voit (Classes Anonymes)
         final List<User> activeAdults = users.stream()
                 .filter(
@@ -68,16 +75,16 @@ public class EvolutionLoop {
                         })
                 .collect(Collectors.toList());
 
-        System.out.println("Résultat stream sans lambda : " + activeAdults);
+        return activeAdults;
     }
 
-    public static void activeAdultsStreamWithLambda(final List<User> users) {
+    public static List<User> activeAdultsStreamWithLambda(final List<User> users) {
         // Ce que le compilateur voit (Classes Anonymes)
         final List<User> activeAdults = users.stream()
                 .filter(u -> u.isActive()) // Le compilateur génère le Predicate
                 .filter(u -> u.age() >= 18) // Code métier pur
                 .toList(); // (Java 16+)
 
-        System.out.println("Résultat stream avec lambda : " + activeAdults);
+        return activeAdults;
     }
 }
