@@ -8,6 +8,7 @@
     <name>Tuto Java - Parent</name>
     <description>Parent Maven module for the Tuto Java project</description>
     <modules>
+        <module>00-common</module>
         <module>01-stream</module>
     </modules>
     <distributionManagement>
@@ -23,6 +24,14 @@
         <maven.compiler.target>${application.java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

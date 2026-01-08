@@ -6,17 +6,10 @@
         <artifactId>parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>01-stream</artifactId>
+    <artifactId>00-common</artifactId>
     <packaging>jar</packaging>
-    <name>TutoJava - 01 - Stream</name>
+    <name>TutoJava - 00 - Common</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>fr.jbwittner.tutojava</groupId>
-            <artifactId>00-common</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 </project>
